@@ -28,9 +28,9 @@ class HMTorchDataset(Dataset):
         self.raw_data = []
         for split in self.splits:
             path = os.path.join("/content/drive/MyDrive/meme_project/hateful_memes/", f"{split}.jsonl")
-            print('debug', path)
+            # print('debug', path)
             self.raw_data.extend(
-                    [json.loads(jline) for jline in open(path, "r").read().split('\n')[:-1]]
+                    [json.loads(jline) for jline in open(path, "r").read().split('\n')[:-1]] #
             )
         print("Load %d data from split(s) %s." % (len(self.raw_data), self.name))
 
@@ -40,8 +40,11 @@ class HMTorchDataset(Dataset):
         # Loading detection features to img_data
         img_data = []
 
+        # id2datum_keys_int = [int(x) for x in list(self.id2datum.keys())]
         path = "/content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv"
         img_data.extend(load_obj_tsv(path, self.id2datum.keys()))
+        #  id2datum_keys_int))
+        # print(img_data)
 
         # Convert img list to dict
         self.imgid2img = {}
@@ -49,13 +52,13 @@ class HMTorchDataset(Dataset):
             # Adding int here to convert 0625 to 625
             self.imgid2img[int(img_datum['img_id'])] = img_datum
 
-
         # Only keep the data with loaded image features
         self.data = []
+        
         for datum in self.raw_data:
             # In HM the Img Id field is simply "id"
-            if datum['id'] in self.imgid2img:
-                self.data.append(datum)
+          if int(datum['id']) in self.imgid2img:
+              self.data.append(datum)
 
         print("Use %d data in torch dataset" % (len(self.data)))
         print()
