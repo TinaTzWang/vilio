@@ -27,9 +27,10 @@ class HMTorchDataset(Dataset):
         # Loading datasets to data
         self.raw_data = []
         for split in self.splits:
-            path = os.path.join("data/", f"{split}.jsonl")
+            path = os.path.join("/content/drive/MyDrive/meme_project/hateful_memes/", f"{split}.jsonl")
+            print('debug', path)
             self.raw_data.extend(
-                    [json.loads(jline) for jline in open(path, "r").read().split('\n')]
+                    [json.loads(jline) for jline in open(path, "r").read().split('\n')[:-1]]
             )
         print("Load %d data from split(s) %s." % (len(self.raw_data), self.name))
 
@@ -39,7 +40,7 @@ class HMTorchDataset(Dataset):
         # Loading detection features to img_data
         img_data = []
 
-        path = "data/HM_img.tsv"
+        path = "/content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv"
         img_data.extend(load_obj_tsv(path, self.id2datum.keys()))
 
         # Convert img list to dict

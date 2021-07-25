@@ -55,7 +55,7 @@ class LXMERTTorchDataset(Dataset):
         # Loading datasets to data
         self.raw_data = []
         for split in self.splits:
-            path = os.path.join("data/", f"{split}.jsonl")
+            path = os.path.join("/content/drive/MyDrive/meme_project/hateful_memes/", f"{split}.jsonl")
             self.raw_data.extend(
                     [json.loads(jline) for jline in open(path, "r").read().split('\n')]
             )
@@ -66,7 +66,7 @@ class LXMERTTorchDataset(Dataset):
 
         img_data = []
 
-        path = "data/HM_img.tsv"
+        path = "/content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv"
         img_data.extend(load_obj_tsv(path, self.id2datum.keys()))
 
         # Convert img list to dict
