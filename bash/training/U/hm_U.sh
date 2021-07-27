@@ -42,4 +42,4 @@ python3 hm.py --seed 43 --model U \
 # --num_features 36 --loadpre ./data/uniter-large.pt --num_pos 6 --contrib --exp U36 --topk $topk
 
 # # Simple Average
-# python utils/ens.py --enspath ./data/ --enstype sa --exp U365072
+python utils/ens.py --enspath ./data/ --enstype sa --exp U36 # 5072

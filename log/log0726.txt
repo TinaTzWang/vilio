@@ -1,0 +1,228 @@
+/content/vilio# bash bash/training/U/hm_U.sh
+2021-07-27 02:52:37.607044: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+comet_ml is installed but `COMET_API_KEY` is not set.
+Load 8500 data from split(s) train.
+Traceback (most recent call last):
+  File "hm.py", line 392, in <module>
+    main()
+  File "hm.py", line 345, in main
+    hm = HM()
+  File "hm.py", line 58, in __init__
+    args.train, bs=args.batch_size, shuffle=True, drop_last=False
+  File "hm.py", line 43, in get_tuple
+    tset = HMTorchDataset(splits)
+  File "/content/vilio/fts_tsv/hm_data_tsv.py", line 38, in __init__
+    self.id2datum = {datum["id"]: datum for datum in self.raw_data}
+  File "/content/vilio/fts_tsv/hm_data_tsv.py", line 38, in <dictcomp>
+    self.id2datum = {datum["id"]: datum for datum in self.raw_data}
+TypeError: string indices must be integers
+2021-07-27 02:52:43.028162: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library libcudart.so.10.1
+comet_ml is installed but `COMET_API_KEY` is not set.
+Load 9095 data from split(s) traindev.
+Start to load Faster-RCNN detected objects from /content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv
+Loaded 9095 images in file /content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv in 72 seconds.
+Use 9095 data in torch dataset
+
+Load 500 data from split(s) dev_seen.
+Start to load Faster-RCNN detected objects from /content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv
+Loaded 500 images in file /content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv in 65 seconds.
+Use 500 data in torch dataset
+
+Some weights of BertU were not initialized from the model checkpoint at bert-large-cased and are newly initialized: ['bert.img_embeddings.img_linear.weight', 'bert.img_embeddings.img_linear.bias', 'bert.img_embeddings.img_layer_norm.weight', 'bert.img_embeddings.img_layer_norm.bias', 'bert.img_embeddings.pos_layer_norm.weight', 'bert.img_embeddings.pos_layer_norm.bias', 'bert.img_embeddings.pos_linear.weight', 'bert.img_embeddings.pos_linear.bias', 'bert.img_embeddings.LayerNorm.weight', 'bert.img_embeddings.LayerNorm.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+UNEXPECTED:  []
+MISSING:  ['bert.img_embeddings.img_linear.weight', 'bert.img_embeddings.img_linear.bias', 'bert.img_embeddings.img_layer_norm.weight', 'bert.img_embeddings.img_layer_norm.bias', 'bert.img_embeddings.pos_layer_norm.weight', 'bert.img_embeddings.pos_layer_norm.bias', 'bert.img_embeddings.pos_linear.weight', 'bert.img_embeddings.pos_linear.bias', 'bert.img_embeddings.LayerNorm.weight', 'bert.img_embeddings.LayerNorm.bias']
+ERRORS:  []
+REINITING:  Linear(in_features=1024, out_features=2048, bias=True)
+REINITING:  GeLU()
+REINITING:  LayerNorm((2048,), eps=1e-12, elementwise_affine=True)
+REINITING:  Linear(in_features=2048, out_features=2, bias=True)
+REINITING:  Sequential(
+  (0): Linear(in_features=1024, out_features=2048, bias=True)
+  (1): GeLU()
+  (2): LayerNorm((2048,), eps=1e-12, elementwise_affine=True)
+  (3): Linear(in_features=2048, out_features=2, bias=True)
+)
+Load pre-trained model from ./data/uniter-large.pt
+
+Weights in loaded but not in model:
+cls.predictions.bias
+cls.predictions.decoder.weight
+cls.predictions.transform.LayerNorm.bias
+cls.predictions.transform.LayerNorm.weight
+cls.predictions.transform.dense.bias
+cls.predictions.transform.dense.weight
+feat_regress.bias
+feat_regress.net.0.bias
+feat_regress.net.0.weight
+feat_regress.net.2.bias
+feat_regress.net.2.weight
+feat_regress.weight
+img_embeddings.mask_embedding.weight
+img_embeddings.mask_embedding.weight
+itm_output.bias
+itm_output.weight
+region_classifier.net.0.bias
+region_classifier.net.0.weight
+region_classifier.net.2.bias
+region_classifier.net.2.weight
+region_classifier.net.3.bias
+region_classifier.net.3.weight
+
+Weights in model but not in loaded:
+embeddings.position_idsTotal Iters: 5685/usr/local/lib/python3.7/dist-packages/torchcontrib/optim/swa.py:130: UserWarning: Casting swa_start, swa_freq to int
+  warnings.warn("Casting swa_start, swa_freq to int")
+Splits in Train data: ['traindev']
+Splits in Valid data: ['dev_seen']
+Batches: 1137
+tensor([-1.2562, -0.3351], device='cuda:0')
+
+Epoch(U) 0(250): Train AC 57.90 RA 53.5617 LOSS 1395.4796
+
+Epoch(U) 0(250): DEV AC 50.80 RA 62.0249
+Epoch(U) 0(250): BEST AC 50.80 RA 62.0249
+
+Epoch(U) 0(500): Train AC 62.08 RA 59.9451 LOSS 1241.0444
+
+Epoch(U) 0(500): DEV AC 57.80 RA 64.6013 
+Epoch(U) 0(500): BEST AC 57.80 RA 64.6013 
+
+Epoch(U) 0(750): Train AC 64.70 RA 65.0934 LOSS 1204.1177
+
+Epoch(U) 0(750): DEV AC 58.40 RA 67.1649 
+Epoch(U) 0(750): BEST AC 58.40 RA 67.1649 
+
+Epoch(U) 0(1000): Train AC 67.33 RA 69.0916 LOSS 1079.7436
+
+Epoch(U) 0(1000): DEV AC 69.20 RA 75.0972 
+Epoch(U) 0(1000): BEST AC 69.20 RA 75.0972 
+tensor([-1.9055, -0.1610], device='cuda:0')
+
+Epoch(U) 1(1250): Train AC 82.19 RA 88.8107 LOSS 947.0655
+
+Epoch(U) 1(1250): DEV AC 66.60 RA 74.1275 
+Epoch(U) 1(1250): BEST AC 69.20 RA 75.0972 
+
+Epoch(U) 1(1500): Train AC 83.51 RA 88.9636 LOSS 832.8691
+
+Epoch(U) 1(1500): DEV AC 64.00 RA 75.2588 
+Epoch(U) 1(1500): BEST AC 64.00 RA 75.2588 
+
+Epoch(U) 1(1750): Train AC 82.93 RA 88.4241 LOSS 886.6055
+
+Epoch(U) 1(1750): DEV AC 73.80 RA 82.9976 
+Epoch(U) 1(1750): BEST AC 73.80 RA 82.9976 
+
+Epoch(U) 1(2000): Train AC 82.81 RA 88.8656 LOSS 808.3901
+
+Epoch(U) 1(2000): DEV AC 65.20 RA 84.9930 
+Epoch(U) 1(2000): BEST AC 65.20 RA 84.9930 
+
+Epoch(U) 1(2250): Train AC 83.47 RA 89.5097 LOSS 726.5296
+
+Epoch(U) 1(2250): DEV AC 78.80 RA 87.8078 
+Epoch(U) 1(2250): BEST AC 78.80 RA 87.8078 
+tensor([-4.4138, -0.0122], device='cuda:0')
+
+Epoch(U) 2(2500): Train AC 92.87 RA 96.9626 LOSS 559.1186
+
+Epoch(U) 2(2500): DEV AC 77.40 RA 87.6062 
+Epoch(U) 2(2500): BEST AC 78.80 RA 87.8078 
+
+Epoch(U) 2(2750): Train AC 93.22 RA 97.1299 LOSS 546.4338
+
+Epoch(U) 2(2750): DEV AC 76.20 RA 85.0787 
+Epoch(U) 2(2750): BEST AC 78.80 RA 87.8078 
+
+Epoch(U) 2(3000): Train AC 92.98 RA 97.0954 LOSS 612.2727
+
+Epoch(U) 2(3000): DEV AC 76.80 RA 88.6128 
+Epoch(U) 2(3000): BEST AC 76.80 RA 88.6128 
+
+Epoch(U) 2(3250): Train AC 93.07 RA 97.2240 LOSS 522.4860
+
+Epoch(U) 2(3250): DEV AC 77.20 RA 91.0843 
+Epoch(U) 2(3250): BEST AC 77.20 RA 91.0843 
+tensor([-6.8986e-04, -7.2794e+00], device='cuda:0')
+
+Epoch(U) 3(3500): Train AC 98.03 RA 99.4543 LOSS 533.3814
+
+Epoch(U) 3(3500): DEV AC 77.00 RA 88.5343 
+Epoch(U) 3(3500): BEST AC 77.20 RA 91.0843 
+
+Epoch(U) 3(3750): Train AC 97.60 RA 99.1798 LOSS 284.7222
+
+Epoch(U) 3(3750): DEV AC 73.80 RA 88.7880 
+Epoch(U) 3(3750): BEST AC 77.20 RA 91.0843 
+
+Epoch(U) 3(4000): Train AC 97.35 RA 98.9870 LOSS 326.4133
+
+Epoch(U) 3(4000): DEV AC 79.00 RA 89.7513 
+Epoch(U) 3(4000): BEST AC 77.20 RA 91.0843 
+
+Epoch(U) 3(4250): Train AC 97.29 RA 99.0892 LOSS 281.6359
+
+Epoch(U) 3(4250): DEV AC 74.20 RA 89.2168 
+Epoch(U) 3(4250): BEST AC 77.20 RA 91.0843 
+
+Epoch(U) 3(4500): Train AC 97.16 RA 99.0175 LOSS 349.7527
+
+Epoch(U) 3(4500): DEV AC 73.60 RA 85.8684 
+Epoch(U) 3(4500): BEST AC 77.20 RA 91.0843 
+tensor([-0.0121, -4.4246], device='cuda:0')
+
+Epoch(U) 4(4750): Train AC 96.84 RA 99.0620 LOSS 340.0197
+
+Epoch(U) 4(4750): DEV AC 72.80 RA 85.4571 
+Epoch(U) 4(4750): BEST AC 77.20 RA 91.0843 
+
+Epoch(U) 4(5000): Train AC 96.99 RA 98.8908 LOSS 324.4000
+
+Epoch(U) 4(5000): DEV AC 66.60 RA 85.5235 
+Epoch(U) 4(5000): BEST AC 77.20 RA 91.0843 
+
+Epoch(U) 4(5250): Train AC 96.79 RA 98.8307 LOSS 372.4186
+
+Epoch(U) 4(5250): DEV AC 81.80 RA 91.2739 
+Epoch(U) 4(5250): BEST AC 81.80 RA 91.2739 
+
+Epoch(U) 4(5500): Train AC 96.64 RA 98.7552 LOSS 392.6977
+
+Epoch(U) 4(5500): DEV AC 82.80 RA 91.1035 
+Epoch(U) 4(5500): BEST AC 81.80 RA 91.2739 
+Load model from ./data/LASTtraindev.pth
+Load 1000 data from split(s) test_seen.
+Start to load Faster-RCNN detected objects from /content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv
+Loaded 1000 images in file /content/drive/MyDrive/meme_project/hateful_memes/HM_img.tsv in 65 seconds.
+Use 1000 data in torch dataset
+
+Traceback (most recent call last):
+  File "hm.py", line 392, in <module>
+    main()
+  File "hm.py", line 372, in main
+    dump=os.path.join(args.output, '{}_{}.csv'.format(args.exp, split))
+  File "hm.py", line 281, in predict
+    logit = self.model(sent, (feats, boxes))
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/content/vilio/entryU.py", line 200, in forward
+    seq_out, pooled_output = self.model(input_ids.cuda(), None, img_feats.cuda(), img_pos_feats.cuda(), attn_masks.cuda(), gather_index=gather_index.cuda())
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/content/vilio/src/vilio/modeling_bertU.py", line 416, in forward
+    gather_index, txt_type_ids, img_type_ids)
+  File "/content/vilio/src/vilio/modeling_bertU.py", line 360, in _compute_img_txt_embeddings
+    input_ids, position_ids, txt_type_ids)
+  File "/content/vilio/src/vilio/modeling_bertU.py", line 330, in _compute_txt_embeddings
+    output = self.embeddings(input_ids, position_ids, txt_type_ids)
+  File "/usr/local/lib/python3.7/dist-packages/torch/nn/modules/module.py", line 722, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File "/content/vilio/src/vilio/modeling_bertU.py", line 257, in forward
+    embeddings = inputs_embeds + position_embeddings + token_type_embeddings
+RuntimeError: The size of tensor a (513) must match the size of tensor b (512) at non-singleton dimension 1
+Traceback (most recent call last):
+  File "utils/ens.py", line 535, in <module>
+    sa_wrapper(args.enspath)
+  File "utils/ens.py", line 337, in sa_wrapper
+    dev_SA = simple_average(dev_probas, dev[0])
+IndexError: list index out of range
